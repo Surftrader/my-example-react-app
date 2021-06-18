@@ -1,13 +1,14 @@
 import { useState, useCallback, useEffect } from "react";
 import './App.css';
+import CustomButton from "./components/CustomButton";
 
 function App() {
   const [searchString, setSearchString] = useState('');
   const [someString, setSomeString] = useState('');
 
   const apiCall = useCallback(() => {
-    console.log('Search string', searchString);
-  }, [searchString]);
+    console.log('Submit');
+  }, []);
 
 
   useEffect(() => {
@@ -29,6 +30,9 @@ function App() {
           type="text"
           value={someString}
           onChange={(e) => setSomeString(e.target.value)} />
+      </div>
+      <div>
+        <CustomButton title="Submit" onClick={apiCall} />
       </div>
     </div>
   );
