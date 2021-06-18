@@ -12,7 +12,7 @@ function App() {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <Welcome name={name} />
+      <Welcome>{name}</Welcome>
     </div>
   );
 }
