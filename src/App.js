@@ -1,21 +1,16 @@
+import { useState } from "react";
 import './App.css';
-import PreviewPost from './components/PreviewPost';
 
 function App() {
+  const [password, setPassword] = useState('');
   return (
     <div className="App">
-      <PreviewPost
-        title="Новость №1"
-        shortDescription="Описание новости №1"
+      <input
+        type="password"
+        value={password}
+        onChange={(event) => setPassword(event.target.value)}
       />
-      <PreviewPost
-        title="Новость №2"
-        shortDescription="Описание новости №2"
-      />
-      <PreviewPost
-        title="Новость №3"
-        shortDescription="Описание новости №3"
-      />
+      {password.length < 8 ? <div>Простой</div> : <div>Сложный</div>}
     </div>
   );
 }
