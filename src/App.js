@@ -1,28 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './App.css';
 
 function App() {
-
-  // const counterStateVariable = useState(0);
-  // const counter = counterStateVariable[0];
-  // const setCounter = counterStateVariable[1];
-  // or
   const [counter, setCounter] = useState(0);
-  const [myDate, setMyDate] = useState(new Date());
+  const [name, setName] = useState('');
 
   const increaseCounter = () => {
-    setCounter((prevCounter) => prevCounter + 1);
-    setCounter((prevCounter) => prevCounter + 1);
-    setMyDate(new Date());
+    setCounter((prevCounter) => prevCounter + 1)
   };
 
-  console.log("render");
-
+  useEffect(() => {
+    console.log("Изменено в ", new Date().toISOString);
+  });
   return (
     <div className="App">
-      <div>{myDate.toISOString()}</div>
-      {counter}
-      <button type="button" onClick={increaseCounter}>Увеличить значение</button>
+      <div>
+        <label>Имя</label>
+        <input type="text" onChange={(e) => setName(e.target.value)} />
+        <p>{name}</p>
+      </div>
+      <div>
+        {counter}
+        <button type="button" onClick={increaseCounter}>+1</button>
+      </div>
     </div>
   );
 }
