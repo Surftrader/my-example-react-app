@@ -1,34 +1,34 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import './App.css';
-import TestUnmount from "./components/TestUnmount";
 
 function App() {
-  const [counter, setCounter] = useState(0);
-  const [name, setName] = useState('');
-  const [isShow, setIsShow] = useState(false);
+  const [searchString, setSearchString] = useState('');
+  const [someString, setSomeString] = useState('');
 
-  const increaseCounter = () => {
-    setCounter((prevCounter) => prevCounter + 1);
-  };
+  const apiCall = useCallback(() => {
+    console.log('Search string', searchString);
+  }, [searchString]);
 
-  const toggle = () => {
-    setIsShow((prevIsShow) => !prevIsShow);
-  };
+
+  useEffect(() => {
+    apiCall();
+  }, [apiCall]);
 
   return (
     <div className="App">
       <div>
-        <label>Имя</label>
-        <input type="text" onChange={(e) => setName(e.target.value)} />
-        <p>{name}</p>
+        <label className="label">Search:</label>
+        <input
+          type="text"
+          value={searchString}
+          onChange={(e) => setSearchString(e.target.value)} />
       </div>
       <div>
-        {counter}
-        <button type="button" onClick={increaseCounter}>+1</button>
-      </div>
-      <div>
-        <button type="button" onClick={toggle}>toggle</button>
-        {isShow && <TestUnmount />}
+        <label className="label">Some:</label>
+        <input
+          type="text"
+          value={someString}
+          onChange={(e) => setSomeString(e.target.value)} />
       </div>
     </div>
   );
