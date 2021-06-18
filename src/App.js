@@ -2,15 +2,19 @@ import { useState } from "react";
 import './App.css';
 
 function App() {
-  const [password, setPassword] = useState('');
+  const [isShow, setIsShow] = useState(false);
   return (
     <div className="App">
-      <input
-        type="password"
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-      />
-      {password.length < 8 ? <div>Простой</div> : <div>Сложный</div>}
+      <button type="button"
+        onClick={() => setIsShow(true)}>
+        Показать
+      </button>
+      {isShow && (
+        <div>Здесь важное сообщение
+        <button type="button"
+            onClick={() => setIsShow(false)}>Закрыть</button>
+        </div>
+      )}
     </div>
   );
 }
