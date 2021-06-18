@@ -1,18 +1,21 @@
-import { useState } from 'react';
 import './App.css';
-import Welcome from './components/Welcome';
+import PreviewPost from './components/PreviewPost';
 
 function App() {
-  const [name, setName] = useState('');
   return (
     <div className="App">
-      <label className="Label">Имя </label>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+      <PreviewPost
+        title="Новость №1"
+        shortDescription="Описание новости №1"
       />
-      <Welcome>{name}</Welcome>
+      <PreviewPost
+        title="Новость №2"
+        shortDescription="Описание новости №2"
+      />
+      <PreviewPost
+        title="Новость №3"
+        shortDescription="Описание новости №3"
+      />
     </div>
   );
 }
