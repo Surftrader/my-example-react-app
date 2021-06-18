@@ -1,20 +1,15 @@
-import { useState } from "react";
+
 import './App.css';
 
 function App() {
-  const [isShow, setIsShow] = useState(false);
+  const numbers = [1, 2, 3, 4, 5];
   return (
     <div className="App">
-      <button type="button"
-        onClick={() => setIsShow(true)}>
-        Показать
-      </button>
-      {isShow && (
-        <div>Здесь важное сообщение
-        <button type="button"
-            onClick={() => setIsShow(false)}>Закрыть</button>
-        </div>
-      )}
+      <ul>
+        {numbers.map((value) => (
+          <li key={value.toString()}>{value}</li>
+        ))}
+      </ul>
     </div>
   );
 }
