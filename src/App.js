@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import Welcome from './components/Welcome';
 
 function App() {
   const [name, setName] = useState('');
@@ -11,7 +12,7 @@ function App() {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <p>Привет {name}</p>
+      <Welcome name={name} />
     </div>
   );
 }
