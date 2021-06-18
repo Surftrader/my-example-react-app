@@ -6,12 +6,12 @@ function App() {
   const [name, setName] = useState('');
 
   const increaseCounter = () => {
-    setCounter((prevCounter) => prevCounter + 1)
+    setCounter((prevCounter) => prevCounter + 1);
   };
 
   useEffect(() => {
     console.log("Изменено в ", new Date().toISOString);
-  });
+  }, [counter]);
   return (
     <div className="App">
       <div>
