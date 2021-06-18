@@ -1,39 +1,15 @@
-import { useState } from "react";
 import './App.css';
 
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      item: 'Сходить в супермаркет'
-    },
-    {
-      id: 2,
-      item: 'Забрать вещи из химчистки'
-    },
-    {
-      id: 3,
-      item: 'Написать список дел'
-    }
-  ]);
-
-  const deleteTodo = (id) => {
-    const newTodo = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodo);
+  const sendForm = (e) => {
+    e.preventDefault();
+    console.log('Форма отправлена');
   };
   return (
     <div className="App">
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id.toString()}>
-            {todo.item}
-            <button
-              type="button"
-              onClick={() => deleteTodo(todo.id)}>
-              Удалить</button>
-          </li>
-        ))}
-      </ul>
+      <form onSubmit={sendForm}>
+        <button type="submit" >Отправить</button>
+      </form>
     </div>
   );
 }
