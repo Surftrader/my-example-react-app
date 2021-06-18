@@ -1,15 +1,22 @@
+import { useState } from "react";
 import './App.css';
 
 function App() {
-  const sendForm = (e) => {
-    e.preventDefault();
-    console.log('Форма отправлена');
+
+  // const counterStateVariable = useState(0);
+  // const counter = counterStateVariable[0];
+  // const setCounter = counterStateVariable[1];
+  // or
+  const [counter, setCounter] = useState(0);
+
+  const increaseCounter = () => {
+    setCounter(counter + 1);
   };
+
   return (
     <div className="App">
-      <form onSubmit={sendForm}>
-        <button type="submit" >Отправить</button>
-      </form>
+      {counter}
+      <button type="button" onClick={increaseCounter}>Увеличить значение</button>
     </div>
   );
 }
